@@ -1,0 +1,5 @@
+puts "How many hours are in a year? There are #{24 * 365} hours"
+puts "How many minutes are in a decade? There are #{24 * 365 *10} hours"
+puts "How many seconds old are you? #{31 * (60 * 60 * 24 *365)} seconds"
+puts "How many chocolates do you hope to eat in your life? Too many!!"
+puts "If I am 1246 million seconds old, how old am I? You are #{1246000000/(60 *60 *24 *365)} years old."

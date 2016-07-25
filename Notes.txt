@@ -1,0 +1,266 @@
+/* PUTS*/
+
+the s in puts stands for string; 
+puts really means put string
+e.g.
+##### they are all strings #####
+puts 20       
+puts 20.to_s
+puts '20'
+
+results:
+
+20
+20
+20
+
+
+
+/* GETS & Chomp*/
+ And just as puts always spits out strings, 
+ gets will only retrieve strings.
+ 
+ Chomp help to chomped the strings
+ When getting input, Ruby automatically adds a blank line
+ (or newline) after each bit of input; chomp removes that extra line. 
+ 
+ 
+ .length
+ .reverse  ## it spits out a backwards version of the string
+ .upcase
+ .downcase
+ .capitalize
+ # comments starting with # or =begin and finishing with =end
+ 
+  variable.capitalize! 
+  we don't assign the result of capitalize to a variable. 
+  Instead you might notice the ! at the end of capitalize. 
+  This modifies the value contained within the variable answer itself.
+  
+  
+  
+  The 'while' loop:
+  To accomplish this, we use something called a while loop.
+  It checks to see if a certain condition is true, and while it is, 
+  the loop keeps running. As soon as the condition stops being true, the loop stops!
+  
+  counter = 1
+    while counter < 11
+      puts counter
+      counter = counter + 1
+    end
+    
+    
+  
+  The 'Until' Loop
+  The complement to the while loop is the until loop. 
+  It's sort of like a backwards while:
+  counter = 1
+  until counter == 4
+    puts counter
+    counter += 1
+  end
+  
+  Assignment operators:
+  +=, -=, *=, and /=
+  
+  The 'For' Loop
+  Sometimes you do know how many times you'll be looping, 
+  however, and when that's the case, you'll want to use a for loop.
+  for num in 1...10
+    puts num
+  end
+  
+  The reason Ruby counted to 9 and not 10 was because
+  we used three dots in the range; 
+  this tells Ruby to exclude the final number in the count: 
+  for num in 1...10 means "go up to but don't include 10."
+  
+  If we use two dots, this tells Ruby to include 
+  the highest number in the range.
+  for num in 1..20
+    puts num
+  end
+  
+  
+  The Loop Method:
+  
+  i = 20
+  loop do
+    i -= 1
+    print "#{i}"
+    break if i <= 0
+  end
+  
+  The next keyword can be used to skip over certain steps in the loop 
+  i = 20
+  loop do
+    i -= 1
+    next if i % 2 != 0
+    print "#{i}"
+    break if i <= 0
+  end
+  Use the next keyword so that you skip to the next iteration if the number i is odd.
+  
+  The .each Iterator:
+  
+  The loop iterator is the simplest, but also one of the least powerful. 
+  A more useful iterator is the .each method, which can apply an expression 
+  to each element of an object, one at a time. The syntax looks like this:
+
+  object.each { |item| # Do something }
+  You can also use the do keyword instead of {}:
+
+  object.each do |item| 
+  # Do something
+  end
+  
+  example:
+  array = [1,2,3,4,5]
+
+  array.each do |x|
+    x += 10
+    print "#{x}"
+  end
+  
+  The .times Iterator:
+  The .times method is like a super compact for loop:
+  it can perform a task on each item in an object a specified number of times.
+  
+  
+there are also a number of string methods which change the case (uppercase and lowercase)
+ of your string.  upcase changes every lowercase letter to uppercase, and downcase 
+ changes every uppercase letter to lowercase.  swapcase switches the case of every 
+ letter in the string, and finally, capitalize is just like downcase, except that 
+ it switches the first character to uppercase (if it is a letter).
+ 
+ letters = 'aAbBcCdDeE'
+ puts letters.upcase
+ puts letters.downcase
+ puts letters.swapcase
+ puts letters.capitalize
+ puts ' a'.capitalize
+ puts letters
+
+ if I wanted to center the lines of a poem, I would do it like this:
+ 
+ lineWidth = 50
+ puts(                'Old Mother Hubbard'.center(lineWidth))
+ puts(               'Sat in her cupboard'.center(lineWidth))
+ puts(         'Eating her curds an whey,'.center(lineWidth))
+ puts(          'When along came a spider'.center(lineWidth))
+ puts(         'Which sat down beside her'.center(lineWidth))
+ puts('And scared her poor shoe dog away.'.center(lineWidth))
+ 
+The other two string formatting methods are ljust and  rjust, which stand for 
+left justify and right justify. They are similar to center, 
+except that they pad the string with spaces on the right and left sides, respectively. 
+Let's take a look at all three in action:
+
+lineWidth = 40
+str = '--> text <--'
+puts str.ljust  lineWidth
+puts str.center lineWidth
+puts str.rjust  lineWidth
+puts str.ljust(lineWidth/2) + str.rjust(lineWidth/2)
+  
+Ruby's way of saying "nothing".  nil is a special object which basically means 
+"not any other object." And when you  puts nil, it prints out nothing. (Just a new line.)
+
+The Method each
+
+each allows us to do something (whatever we want) to each object the array points to.
+So, if we want to say something nice about each language in the array below, we'd do this:
+
+languages = ['English', 'German', 'Ruby']
+
+languages.each do |lang|
+  puts 'I love ' + lang + '!'
+  puts 'Don\'t you?'
+end
+
+puts 'And let\'s hear it for C++!'
+puts '...'  
+
+You might be thinking to yourself, "This is a lot like the loops we learned about earlier." 
+Yep, it's similar. One important difference is that the method each is just that: a method. 
+ while and end (much like do, if, else, and all the other  blue words) are not methods. 
+ They are a fundamental part of the Ruby language, just like = and parentheses; 
+ kind of like punctuation marks in English.
+
+But not each; each is just another array method. Methods like each which "act like"
+ loops are often called iterators.
+
+One thing to notice about iterators is that they are always followed by do...end. 
+while and if never had a do near them; we only use do with iterators.
+
+Here's another cute little iterator, but it's not an array method... it's an integer method!
+
+3.times do
+  puts 'Hip-Hip-Hooray!'
+end
+
+First, let's look at to_s and join.  join works much like to_s does, 
+except that it adds a string in between the array's objects. Let's take a look:
+
+foods = ['artichoke', 'brioche', 'caramel']
+
+puts foods
+puts
+puts foods.to_s
+puts
+puts foods.join(', ')
+puts
+puts foods.join('  :)  ') + '  8)'
+
+200.times do
+  puts []
+end
+
+Now let's take a look at push, pop, and last. 
+The methods push and pop are sort of opposites, like + and - are.  
+
+.push adds an object to the end of your array
+.pop removes the last object from the array (and tell you what it was).  
+.last is similar to pop in that it tells you what's at the end of the array, 
+except that it leaves the array alone. 
+
+Again, push and pop actually change the array:
+
+favorites = []
+favorites.push 'raindrops on roses'
+favorites.push 'whiskey on kittens'
+
+puts favorites[0]
+puts favorites.last
+puts favorites.length
+
+puts favorites.pop
+puts favorites
+puts favorites.length
+
+DEFINING A FUNCTION
+So we defined the method sayMoo. 
+(Method names, like variable names, start with a lowercase letter. There are a 
+few exceptions, though, like + or ==.) But don't methods always have to be 
+associated with objects? Well, yes they do, and in this case (as with  puts and gets), 
+the method is just associated with the object representing the whole program. 
+
+def sayMoo
+  puts 'mooooooo...'
+end
+
+sayMoo
+
+You may have noticed that some methods (like  gets, to_s, reverse...) 
+you can just call on an object. However, other methods (like +, -, puts...) 
+take parameters to tell the object how to do the method. For example, 
+you wouldn't just say  5+, right? You're telling 5 to add, but you aren't telling it what to add.
+
+To add a parameter to sayMoo (let's say, the number of moos), we would do this:
+
+def sayMoo numberOfMoos
+  puts 'mooooooo...'*numberOfMoos
+end
+
+sayMoo 3
